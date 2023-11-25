@@ -11,7 +11,7 @@ const Banner = () => {
     <p className='font-Sora font-bold text-3xl lg:text-3xl text-blue-900'>Voice Your Views, Shape Your World: Survey & Poll Central!</p>
     <p className='font-Sora font-semibold text-2xl text-[#7ba0bc] mt-10'>Opinions Matter, Unleash Your Voice <br />with <br /><span className='font-Sora font-bold text-3xl text-blue-900'>Survey Sphere</span></p>
 
-    <Button variant="contained" style={{ backgroundColor: '#d0312d', marginTop: 40 }} endIcon={<IoIosArrowDropright />}>
+    <Button variant="contained" style={{ backgroundColor: '#63088dd7', marginTop: 40 }} endIcon={<IoIosArrowDropright />}>
       EXPLORE
     </Button>
   </div>

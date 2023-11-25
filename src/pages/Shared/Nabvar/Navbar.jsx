@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link,NavLink } from "react-router-dom";
 import './Navbar.css'
 import { PiGlobeHemisphereEastDuotone } from "react-icons/pi";
 
+
 const Navbar = () => {
     const navOptions = <>
-        <li className="font-Sora font-semibold"><Link to="/">Home</Link></li>
-        <li className="font-Sora font-semibold"><Link to="/survey">Survey Page</Link></li>
+        <li className="font-Sora font-semibold"><NavLink to='/'>Home</NavLink></li>
+        <li className="font-Sora font-semibold"><NavLink  to="/survey">Survey Page</NavLink></li>
        
 
        

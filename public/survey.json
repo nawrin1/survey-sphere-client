@@ -1,0 +1,57 @@
+[
+    {
+      "title": "Product Feedback",
+      "description": "Share your thoughts on our latest product. Your feedback is valuable in helping us improve.",
+      "category": "Feedback",
+      "votedNumber": 120
+    },
+    {
+      "title": "Employee Satisfaction",
+      "description": "Evaluate your satisfaction and provide insights into the work environment. Your feedback matters.",
+      "category": "Workplace",
+      "votedNumber": 85
+    },
+    {
+      "title": "Health and Wellness Habits",
+      "description": "Participate in a survey about health and wellness habits. Your input contributes to creating a healthier community.",
+      "category": "Health",
+      "votedNumber": 150
+    },
+    {
+      "title": "Environmental Awareness",
+      "description": "Express your views on environmental issues. Let's work together for a sustainable future.",
+      "category": "Environment",
+      "votedNumber": 95
+    },
+    {
+      "title": "Technology Trends",
+      "description": "Stay updated on the latest technology trends. Share your opinions on emerging technologies.",
+      "category": "Technology",
+      "votedNumber": 200
+    },
+    {
+      "title": "Travel Preferences",
+      "description": "Tell us about your travel preferences and experiences. Your insights help us tailor our services.",
+      "category": "Travel",
+      "votedNumber": 110
+    },
+    {
+      "title": "Customer Satisfaction",
+      "description": "Share your experience with our services. Your satisfaction is important to us.",
+      "category": "Feedback",
+      "votedNumber": 90
+    },
+    {
+      "title": "Work-Life Balance",
+      "description": "Tell us about your work-life balance and ways we can improve it. Your input matters.",
+      "category": "Workplace",
+      "votedNumber": 130
+    },
+    {
+      "title": "Healthy Eating Habits",
+      "description": "Participate in a survey about healthy eating habits. Your choices contribute to a healthier lifestyle.",
+      "category": "Health",
+      "votedNumber": 180
+    }
+  ]
+  
