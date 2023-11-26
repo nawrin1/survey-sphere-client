@@ -6,6 +6,9 @@ import Social from '../../components/Social/Social';
 import { useForm } from 'react-hook-form';
 import { TextField } from '@mui/material';
 import img1 from '../../assets/computer-security-with-login-password-padlock.jpg'
+import { AuthContext } from '../../provider/AuthProvider';
+import { useContext } from 'react';
+import Swal from 'sweetalert2';
 
 // import Swal from 'sweetalert2'
 
@@ -14,7 +17,7 @@ import img1 from '../../assets/computer-security-with-login-password-padlock.jpg
 const Login = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
   
-    // const { signIn } = useContext(AuthContext);
+    const {login } = useContext(AuthContext);
     // const navigate = useNavigate();
     // const location = useLocation();
 
@@ -26,21 +29,21 @@ const Login = () => {
       
        
         console.log(data.email, data.password);
-        // signIn(email, password)
-        //     .then(result => {
-        //         const user = result.user;
-        //         console.log(user);
-        //         Swal.fire({
-        //             title: 'User Login Successful.',
-        //             showClass: {
-        //                 popup: 'animate__animated animate__fadeInDown'
-        //             },
-        //             hideClass: {
-        //                 popup: 'animate__animated animate__fadeOutUp'
-        //             }
-        //         });
-        //         navigate(from, { replace: true });
-        //     })
+        login(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                Swal.fire({
+                    title: 'User Login Successful.',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                });
+                // navigate(from, { replace: true });
+            })
     }
 
 
@@ -57,7 +60,7 @@ const Login = () => {
                         <form onSubmit={handleSubmit(onSubmit)}className="card-body">
                         <div className="form-control">
                               
-                              <TextField style={{fontFamily:'Sora'}}  id="outlined-search" label="Your email" type="email"  {...register("email", { required: true })} name="email" placeholder="Your Email.."  />
+                              <TextField style={{fontFamily:'Sora'}}  id="outlined-search1" label="Your email" type="email"  {...register("email", { required: true })} name="email" placeholder="Your Email.."  />
                              
                               {errors.email && <span className="text-red-600">Email is required</span>}
                               

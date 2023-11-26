@@ -1,58 +1,65 @@
 
 
-// import { useContext } from "react";
-// import { Helmet } from "react-helmet-async";
+
 import { useForm } from "react-hook-form";
-// import { AuthContext } from "../../providers/AuthProvider";
+
 import { Link, useNavigate } from "react-router-dom";
 // import Swal from 'sweetalert2'
-// import useAxiosPublic from "../../hooks/useAxiosPublic";
-// import SocialLogin from "../../components/SocialLogin/SocialLogin";
-// import { AuthContext } from "../../providers/AuthProviders";
+
 import im1 from '../../assets/reg.jpg'
 import TextField from '@mui/material/TextField';
 import Social from "../../components/Social/Social";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const Register= () => {
-    // const axiosPublic = useAxiosPublic();
+    const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    // const { createUser, updateUserProfile } = useContext(AuthContext);
-    // const navigate = useNavigate();
+    const { createUser, updateProfileUser,logout } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const onSubmit = data => {
         console.log(data.email,data.password,data.name,data.photoURL)
 
-        // createUser(data.email, data.password)
-        //     .then(result => {
-        //         const loggedUser = result.user;
-        //         console.log(loggedUser);
-        //         updateUserProfile(data.name, data.photoURL)
-        //             .then(() => {
-        //                 // create user entry in the database
-        //                 const userInfo = {
-        //                     name: data.name,
-        //                     email: data.email
-        //                 }
-        //                 axiosPublic.post('/users', userInfo)
-        //                     .then(res => {
-        //                         if (res.data.insertedId) {
-        //                             console.log('user added to the database')
-        //                             reset();
-        //                             Swal.fire({
-        //                                 position: 'top-end',
-        //                                 icon: 'success',
-        //                                 title: 'User created successfully.',
-        //                                 showConfirmButton: false,
-        //                                 timer: 1500
-        //                             });
-        //                             navigate('/');
-        //                         }
-        //                     })
+        createUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateProfileUser(data.name, data.photoURL)
+                    .then(() => {
+                       
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email,
+                            role:"user"
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                console.log(res,"ressssss")
+                                if (res.data.insertedId) {
+                                    console.log('user added')
+                                    reset();
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'User created ',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    logout()
+                                    .then(res=>navigate('/login'))
 
 
-        //             })
-        //             .catch(error => console.log(error))
-        //     })
+                                   
+                                }
+                            })
+
+
+                    })
+                    .catch(error => console.log(error))
+            })
     };
 
     return (
@@ -68,7 +75,7 @@ const Register= () => {
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                             <div className="form-control">
                                 
-                                <TextField style={{fontFamily:'Sora'}} id="outlined-search" label="Your Name" type="text"  {...register("name", { required: true })} name="name" placeholder="Your Name.."/>
+                                <TextField style={{fontFamily:'Sora'}} id="outlined-search1" label="Your Name" type="text"  {...register("name", { required: true })} name="name" placeholder="Your Name.."/>
        
                              
                                 {errors.name && <span className="text-red-600">Name is required</span>}
@@ -76,14 +83,14 @@ const Register= () => {
                             </div>
                             <div className="form-control">
                                
-                                <TextField style={{fontFamily:'Sora'}} id="outlined-search" label="Your Photo URL" type="text"  {...register("photoURL", { required: true })} placeholder="Your Photo URL.." />
+                                <TextField style={{fontFamily:'Sora'}} id="outlined-search2" label="Your Photo URL" type="text"  {...register("photoURL", { required: true })} placeholder="Your Photo URL.." />
                                 
                                 {errors.photoURL && <span className="text-red-600">PhotoURL is required</span>}
                                 
                             </div>
                             <div className="form-control">
                               
-                                <TextField style={{fontFamily:'Sora'}} id="outlined-search" label="Your email" type="email"  {...register("email", { required: true })} name="email" placeholder="Your Email.."  />
+                                <TextField style={{fontFamily:'Sora'}} id="outlined-search3" label="Your email" type="email"  {...register("email", { required: true })} name="email" placeholder="Your Email.."  />
                                
                                 {errors.email && <span className="text-red-600">Email is required</span>}
                                 
@@ -92,7 +99,7 @@ const Register= () => {
                                 {/* <label className="label">
                                     <span className="label-text">Password</span>
                                 </label> */}
-                                 <TextField style={{fontFamily:'Sora'}} id="outlined-search" label="Your Password" type="password"  {...register("password", {
+                                 <TextField style={{fontFamily:'Sora'}} id="outlined-search4" label="Your Password" type="password"  {...register("password", {
                                     required: true,
                                    
                                     

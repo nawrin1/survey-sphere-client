@@ -1,9 +1,12 @@
 import { Link,NavLink } from "react-router-dom";
 import './Navbar.css'
 import { PiGlobeHemisphereEastDuotone } from "react-icons/pi";
+import { useContext } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 
 const Navbar = () => {
+    const {user,logout}=useContext(AuthContext)
     const navOptions = <>
         <li className="font-Sora font-semibold"><NavLink to='/'>Home</NavLink></li>
         <li className="font-Sora font-semibold"><NavLink  to="/survey">Survey Page</NavLink></li>
@@ -11,6 +14,11 @@ const Navbar = () => {
 
        
     </>
+    const handleLogOut=()=>{
+        logout()
+        .then(() => { })
+            .catch(error => console.log(error));
+    }
     return (
         <div className="nav">
             <div className="navbar ">
@@ -37,7 +45,15 @@ const Navbar = () => {
                 <img alt="Tailwind CSS Navbar component" src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                 </div>
             </label>
-            <li><NavLink to="/register">Register</NavLink></li>
+            {
+            user ? <>
+                <span>{user?.displayName}</span>
+                <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
+            </> : <>
+                <li><NavLink to="/login">Login</NavLink></li>
+            </>
+        }
+          
             </div>
             </div>  
             
