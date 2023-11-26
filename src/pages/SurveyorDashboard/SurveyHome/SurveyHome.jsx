@@ -13,10 +13,11 @@ const SurveyHome = () => {
                         
                         Create Survey</NavLink>
                 </li>
-                <li>
-                            <NavLink to="/">
-                                
-                                Home</NavLink>
+                       <li>
+                            <NavLink to="/">Home</NavLink>
+                        </li>
+                       <li>
+                            <NavLink to="/surveyDashboard/allSurveyPage">All Surveys</NavLink>
                         </li>
 
 

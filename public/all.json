@@ -1,0 +1,143 @@
+[
+    {
+      "title": "Product Feedback",
+      "category": "Feedback",
+      "description": "Share your thoughts on our latest product. Your feedback is valuable in helping us improve.",
+      "ques1": "What are your thoughts on the product?",
+      "ques2": "How can we improve the product?",
+      "ques3": "Would you recommend this product to others?",
+      "votedNumber": 50,
+      "liked": 0,
+      "disliked": 0,
+      "status": "publish",
+      "deadline": "2023-11-23",
+      "surveyor": "nana@nani.com",
+      "time": "2023-11-27"
+    },
+    {
+      "title": "Employee Satisfaction",
+      "category": "Workplace",
+      "description": "Evaluate your satisfaction and provide insights into the work environment. Your feedback matters.",
+      "ques1": "How satisfied are you with your current work environment?",
+      "ques2": "What aspects of the workplace contribute to your satisfaction?",
+      "ques3": "What improvements would you suggest for a better work environment?",
+      "votedNumber": 49,
+      "liked": 0,
+      "disliked": 0,
+      "status": "publish",
+      "deadline": "2023-11-23",
+      "surveyor": "nana@nani.com",
+      "time": "2023-11-27"
+    },
+  
+     
+    {
+          "title": "Customer Satisfaction",
+          "category": "Feedback",
+          "description": "Share your experience with our services. Your satisfaction is important to us.",
+          "ques1": "How satisfied are you with our services?",
+          "ques2": "What aspects of our services contribute to your satisfaction?",
+          "ques3": "What improvements would you suggest for better customer satisfaction?",
+          "votedNumber": 30,
+          "liked": 0,
+          "disliked": 0,
+          "status": "publish",
+          "deadline": "2023-11-23",
+          "surveyor": "nana@nani.com",
+          "time": "2023-11-27"
+        },
+        {
+          "title": "Work-Life Balance",
+          "category": "Workplace",
+          "description": "Tell us about your work-life balance and ways we can improve it. Your input matters.",
+          "ques1": "How would you rate your current work-life balance?",
+          "ques2": "What factors contribute to your work-life balance?",
+          "ques3": "What changes would you suggest for a better work-life balance?",
+          "votedNumber": 10,
+          "liked": 0,
+          "disliked": 0,
+          "status": "publish",
+          "deadline": "2023-11-23",
+          "surveyor": "nana@nani.com",
+          "time": "2023-11-27"
+        },
+        {
+            "title": "Healthy Eating Habits",
+            "category": "Health",
+            "description": "Participate in a survey about healthy eating habits. Your choices contribute to a healthier lifestyle.",
+            "ques1": "How often do you incorporate fruits and vegetables into your meals?",
+            "ques2": "What challenges do you face in maintaining a healthy diet?",
+            "ques3": "What types of healthy foods would you like more information about?",
+            "votedNumber": 20,
+            "liked": 0,
+            "disliked": 0,
+            "status": "publish",
+            "deadline": "2023-11-23",
+            "surveyor": "nana@nani.com",
+            "time": "2023-11-27"
+          },
+          {
+            "title": "Technology Trends",
+            "category": "Technology",
+            "description": "Stay updated on the latest technology trends. Share your opinions on emerging technologies.",
+            "ques1": "What emerging technologies are you most interested in?",
+            "ques2": "How do you stay informed about technology trends?",
+            "ques3": "Do you think technology has a positive impact on society?",
+            "votedNumber": 40,
+            "liked": 0,
+            "disliked": 0,
+            "status": "publish",
+            "deadline": "2023-11-23",
+            "surveyor": "nana@nani.com",
+            "time": "2023-11-27"
+          },
+          {
+            "title": "Travel Preferences",
+            "category": "Travel",
+            "description": "Tell us about your travel preferences and experiences. Your insights help us tailor our services.",
+            "ques1": "What type of travel destinations do you prefer?",
+            "ques2": "How often do you travel for leisure?",
+            "ques3": "What factors influence your choice of travel accommodations?",
+            "votedNumber": 12,
+            "liked": 0,
+            "disliked": 0,
+            "status": "publish",
+            "deadline": "2023-11-23",
+            "surveyor": "nana@nani.com",
+            "time": "2023-11-27"
+          },
+          {
+            "title": "Health and Wellness Habits",
+            "category": "Health",
+            "description": "Participate in a survey about health and wellness habits. Your input contributes to creating a healthier community.",
+            "ques1": "What healthy habits do you practice regularly?",
+            "ques2": "How would you rate your overall well-being?",
+            "ques3": "What challenges do you face in maintaining a healthy lifestyle?",
+            "votedNumber": 25,
+            "liked": 0,
+            "disliked": 0,
+            "status": "publish",
+            "deadline": "2023-11-23",
+            "surveyor": "nana@nani.com",
+            "time": "2023-11-27"
+          },
+          {
+            "title": "Environmental Awareness",
+            "category": "Environment",
+            "description": "Express your views on environmental issues. Let's work together for a sustainable future.",
+            "ques1": "What environmental issues concern you the most?",
+            "ques2": "How do you contribute to environmental conservation?",
+            "ques3": "What initiatives would you like to see for a sustainable future?",
+            "votedNumber": 60,
+            "liked": 0,
+            "disliked": 0,
+            "status": "publish",
+            "deadline": "2023-11-23",
+            "surveyor": "nana@nani.com",
+            "time": "2023-11-27"
+          }
+     
+      
+    
+  ]
+  
