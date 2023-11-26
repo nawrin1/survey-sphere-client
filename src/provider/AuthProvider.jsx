@@ -40,6 +40,8 @@ const AuthProvider = ({children}) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+            console.log(currentUser,"cuser")
+            console.log(user,"inside auth")
             if (currentUser) {
                 
                 const userInfo = { email: currentUser.email };

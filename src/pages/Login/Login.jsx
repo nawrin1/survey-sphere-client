@@ -18,11 +18,11 @@ const Login = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
   
     const {login } = useContext(AuthContext);
-    // const navigate = useNavigate();
-    // const location = useLocation();
+    const navigate = useNavigate();
+     const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+   
 
-    // const from = location.state?.from?.pathname || "/";
-    // console.log('state in the location login page', location.state)
 
 
     const onSubmit = data => {
@@ -34,7 +34,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 Swal.fire({
-                    title: 'User Login Successful.',
+                    title: 'User Logged in.',
                     showClass: {
                         popup: 'animate__animated animate__fadeInDown'
                     },
@@ -42,7 +42,19 @@ const Login = () => {
                         popup: 'animate__animated animate__fadeOutUp'
                     }
                 });
-                // navigate(from, { replace: true });
+                // navigate('/')
+                navigate(from, { replace: true });
+                
+            })
+            .catch(error => {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Invalid Email or Password',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                navigate('/login')
             })
     }
 

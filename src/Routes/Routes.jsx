@@ -8,6 +8,9 @@ import Error from "../pages/Error/Error";
 import SurveyPage from "../pages/SurveyPage/SurveyPage";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
+import SurveyHome from "../pages/SurveyorDashboard/SurveyHome/SurveyHome";
+import CreateSurvey from "../pages/SurveyorDashboard/CreateSurvey/CreateSurvey";
+
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -32,4 +35,15 @@ export const router = createBrowserRouter([
         }
       ]
     },
+    {
+      path:'surveyDashboard',
+      element:<SurveyHome></SurveyHome>,
+      children:[
+        {
+          path:'surveyCreate',
+          element:<CreateSurvey></CreateSurvey>
+        }
+      ]
+
+    }
   ]);
