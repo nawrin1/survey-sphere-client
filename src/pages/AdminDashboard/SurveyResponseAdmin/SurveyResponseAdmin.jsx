@@ -6,7 +6,7 @@ const SurveyResponseAdmin = () => {
     console.log(vote,"admin response survey")
     return (
         <div>
-            <h2>Admin survey response</h2>
+            
             <div>
              <div>
       <h2 className="text-2xl font-Sora font-bold text-center text-blue-800">Survey Response</h2>

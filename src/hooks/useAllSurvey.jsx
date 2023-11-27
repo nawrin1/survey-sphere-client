@@ -9,7 +9,7 @@ const useAllSurvey = (search) => {
     console.log(search,"all")
   
 
-    const {data: surveys = [], isPending: loadings } = useQuery({
+    const {data: surveys = [], isPending: loadings,refetch } = useQuery({
         queryKey: ['surveys',search], 
         queryFn: async() =>{
             const res = await axios.get(`http://localhost:5000/survey?search=${search}`);
@@ -18,7 +18,7 @@ const useAllSurvey = (search) => {
     })
 
 
-    return [surveys, loadings]
+    return [surveys, loadings,refetch]
 }
 
 export default useAllSurvey;

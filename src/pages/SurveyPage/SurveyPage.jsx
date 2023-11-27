@@ -13,7 +13,7 @@ const SurveyPage = () => {
     
     
     const [search,setSearch]=useState('')
-    const [surveys,loadings]=useAllSurvey(search)
+    const [surveys,loadings,refetch]=useAllSurvey(search)
     
     const handleSearch=e=>{
         e.preventDefault()

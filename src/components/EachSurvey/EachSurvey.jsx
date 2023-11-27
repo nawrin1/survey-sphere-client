@@ -3,6 +3,7 @@
 const EachSurvey = ({item}) => {
     console.log(item,"...")
     const {category,description,title,votedNumber}=item
+    
     return (
 <div>
     <div className="p-4 h-[300px] bg-slate-200 flex flex-col rounded-lg shadow-md shadow-slate-600">

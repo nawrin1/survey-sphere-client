@@ -19,6 +19,7 @@ import SurveyResponse from "../pages/SurveyResponse/SurveyResponse";
 import AdminHome from "../pages/AdminDashboard/AdminHome/AdminHome";
 import SurveyResponseAdmin from "../pages/AdminDashboard/SurveyResponseAdmin/SurveyResponseAdmin";
 import AllUsers from "../pages/AdminDashboard/AllUsers/AllUsers";
+import SurveyStatus from "../pages/SurveyStatus/SurveyStatus";
 
 export const router = createBrowserRouter([
     {
@@ -83,6 +84,10 @@ export const router = createBrowserRouter([
         },{
           path:'allUsers',
           element:<AllUsers></AllUsers>
+          
+        },{
+          path:'surveyStatus',
+          element:<SurveyStatus></SurveyStatus>
         }
       ]
     }

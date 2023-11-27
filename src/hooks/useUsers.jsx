@@ -10,19 +10,20 @@ import { useQuery } from "@tanstack/react-query";
 
 
 
-const useUsers = () => {
+const useUsers = (search) => {
     const { user,loading } = useContext(AuthContext)
     const axiosSecure = useAxiosSecure();
-    const { data: allUsers } = useQuery({
+    const { data: allUsers,refetch,isFetched} = useQuery({
         queryKey: [user?.email, 'allUser'],
         enabled:!loading,
         queryFn: async () => {
-            const res = await axiosSecure.get(`/users`);
-            console.log(res.data,"all");
+            const res = await axiosSecure.get(`/users?search=${search}`);
+            console.log(res.data,"all user role");
             return res.data;
         }
     })
-    return [allUsers]
+
+    return [allUsers,refetch,isFetched]
 };
 
 export default useUsers;

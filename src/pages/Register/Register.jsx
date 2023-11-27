@@ -35,6 +35,7 @@ const Register= () => {
                             email: data.email,
                             role:"user"
                         }
+                        console.log('inside reg')
                         axiosPublic.post('/users', userInfo)
                             .then(res => {
                                 console.log(res,"ressssss")
