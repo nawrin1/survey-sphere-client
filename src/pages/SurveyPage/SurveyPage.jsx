@@ -6,8 +6,10 @@ import useSurvey from "../../hooks/useSurvey";
 import { FcSurvey } from "react-icons/fc";
 import { useState } from "react";
 import TextField from '@mui/material/TextField';
+import { useLocation } from "react-router-dom";
 
 const SurveyPage = () => {
+    console.log(useLocation(),"loca")
     
     
     const [search,setSearch]=useState('')

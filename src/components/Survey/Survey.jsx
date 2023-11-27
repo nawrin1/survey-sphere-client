@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 const Survey = ({item}) => {
-    console.log(item,"...")
-    const {category,description,title,votedNumber}=item
+    // console.log(item,"...")
+    const {category,description,title,votedNumber,_id}=item
     return (
 <div>
     <div className="p-4 h-[350px] bg-indigo-950 flex flex-col rounded-lg shadow-md shadow-slate-600">
@@ -16,7 +18,7 @@ const Survey = ({item}) => {
                 <button className="btn outline-dashed text-[16px] font-medium font-Sora">Voted: {votedNumber}</button>
                 </div>
                 <div>
-                <button className="btn outline-dashed text-[16px] font-medium font-Sora outline-white">Details</button>
+               <Link to={`details/${_id}`}> <button className="btn outline-dashed text-[16px] font-medium font-Sora outline-white">Details</button></Link>
 
                 </div>
 

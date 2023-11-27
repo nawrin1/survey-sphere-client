@@ -49,6 +49,7 @@ const Update = () => {
         <div>
         <div className=" min-h-screen ">
            <div className="">
+           <h2 className="font-Sora font-semibold text-4xl text-center">UPDATE SURVEY</h2>
               
                    
                <div className=" shadow-2xl">

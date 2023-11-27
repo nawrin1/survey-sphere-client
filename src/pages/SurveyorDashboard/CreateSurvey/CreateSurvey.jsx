@@ -34,6 +34,7 @@ const CreateSurvey = () => {
         <div>
              <div className=" min-h-screen ">
                 <div className="">
+                    <h2 className="font-Sora font-semibold text-4xl text-center">CREATE SURVEY</h2>
                    
                         
                     <div className=" shadow-2xl">
@@ -86,7 +87,7 @@ const CreateSurvey = () => {
                                 <label className="label ">
                                     <span className="label-text mt-8 mb-4 font-Sora font-semibold text-2xl">Set Deadline:</span>
                                 </label>
-                                <TextField style={{fontFamily:'Sora'}} id="outlined-search7" label="Survey Deadline" type="date"  {...register("deadline", {
+                                <TextField style={{fontFamily:'Sora'}} id="outlined-search7" label="" type="date"  {...register("deadline", {
                                     required: true,
                                    
                                     
