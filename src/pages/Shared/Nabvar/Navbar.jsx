@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import useSurveyor from "../../../hooks/useSurveyor";
+import useAdmin from "../../../hooks/useAdmin";
 
 
 const Navbar = () => {
@@ -13,12 +14,18 @@ const Navbar = () => {
    
     
     const [isSurveyor]=useSurveyor()
+    const [isAdmin]=useAdmin()
+    console.log(isAdmin,"admin from navbar")
     console.log(isSurveyor,"surveyor from nav")
     const navOptions = <>
         <li className="font-Sora font-semibold"><NavLink to='/'>Home</NavLink></li>
         <li className="font-Sora font-semibold"><NavLink  to="/survey">Survey Page</NavLink></li>
         {
             isSurveyor && <li className="font-Sora font-semibold"><Link to="/surveyDashboard/surveyCreate">SDashboard</Link></li>
+        }
+        {
+             isAdmin&& <li className="font-Sora font-semibold"><Link to="/adminDashboard/surveyResponseAdmin">ADashboard</Link></li>
+
         }
        
 

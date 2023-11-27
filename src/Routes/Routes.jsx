@@ -15,6 +15,10 @@ import Update from "../pages/SurveyorDashboard/Update/Update";
 import SurveyDetails from "../pages/SurveyDetails/SurveyDetails";
 import PrivateRoute from '../Routes/PrivateRoute'
 import UserFeedbacks from "../pages/UserFeedbacks/UserFeedbacks";
+import SurveyResponse from "../pages/SurveyResponse/SurveyResponse";
+import AdminHome from "../pages/AdminDashboard/AdminHome/AdminHome";
+import SurveyResponseAdmin from "../pages/AdminDashboard/SurveyResponseAdmin/SurveyResponseAdmin";
+import AllUsers from "../pages/AdminDashboard/AllUsers/AllUsers";
 
 export const router = createBrowserRouter([
     {
@@ -62,8 +66,24 @@ export const router = createBrowserRouter([
         },{
           path:'userFeedbacks',
           element:<UserFeedbacks></UserFeedbacks>
+        },{
+          path:'surveyResponse',
+          element:<SurveyResponse></SurveyResponse>
         }
       ]
 
+    },
+    {
+      path:'adminDashboard',
+      element:<AdminHome></AdminHome>,
+      children:[
+        {
+          path:'surveyResponseAdmin',
+          element:<SurveyResponseAdmin></SurveyResponseAdmin>
+        },{
+          path:'allUsers',
+          element:<AllUsers></AllUsers>
+        }
+      ]
     }
   ]);
