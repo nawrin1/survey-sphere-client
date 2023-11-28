@@ -64,6 +64,9 @@ const SurveyHome = () => {
                        <li className="font-Sora font-semibold">
                             <NavLink to="/surveyDashboard/surveyResponse">Survey Response</NavLink>
                         </li>
+                       <li className="font-Sora font-semibold">
+                            <NavLink to="/surveyDashboard/report">Survey Report</NavLink>
+                        </li>
 
     </ul>
   

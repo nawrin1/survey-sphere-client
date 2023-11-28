@@ -15,6 +15,8 @@
     "@headlessui/react": "^1.7.17",
     "@mui/icons-material": "^5.14.18",
     "@mui/material": "^5.14.18",
+    "@stripe/react-stripe-js": "^2.4.0",
+    "@stripe/stripe-js": "^2.2.0",
     "@tanstack/react-query": "^5.8.7",
     "axios": "^1.6.2",
     "firebase": "^10.6.0",
@@ -28,6 +30,7 @@
     "react-loader-spinner": "^5.4.5",
     "react-router-dom": "^6.20.0",
     "react-select": "^5.8.0",
+    "recharts": "^2.10.1",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.10.1"
   },

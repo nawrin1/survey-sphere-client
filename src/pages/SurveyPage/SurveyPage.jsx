@@ -4,12 +4,13 @@ import Survey from "../../components/Survey/Survey";
 import useAllSurvey from "../../hooks/useAllSurvey";
 import useSurvey from "../../hooks/useSurvey";
 import { FcSurvey } from "react-icons/fc";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextField from '@mui/material/TextField';
 import { useLocation } from "react-router-dom";
 
 const SurveyPage = () => {
     console.log(useLocation(),"loca")
+    const [data,setData]=useState([])
     
     
     const [search,setSearch]=useState('')
@@ -22,6 +23,12 @@ const SurveyPage = () => {
         setSearch(text)
 
     }
+    useEffect(()=>{
+        const survey=surveys.filter(item=>item.status!=="unpublish")
+        setData(survey)
+
+
+    },[surveys])
     
   
     return (
@@ -46,7 +53,7 @@ const SurveyPage = () => {
        </div>
             <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto mt-14">
             {
-                surveys.map((item,idx)=><Survey key={idx}item={item}></Survey>)
+                data.map((item,idx)=><Survey key={idx}item={item}></Survey>)
             }
            </div>
      </div>

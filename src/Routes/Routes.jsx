@@ -20,6 +20,10 @@ import AdminHome from "../pages/AdminDashboard/AdminHome/AdminHome";
 import SurveyResponseAdmin from "../pages/AdminDashboard/SurveyResponseAdmin/SurveyResponseAdmin";
 import AllUsers from "../pages/AdminDashboard/AllUsers/AllUsers";
 import SurveyStatus from "../pages/SurveyStatus/SurveyStatus";
+import Pro from "../pages/Pro/Pro";
+import Payment from "../pages/Payment/Payment";
+import PaymentHistory from "../pages/AdminDashboard/PaymentHistory/PaymentHistory";
+import ReportPage from "../pages/SurveyorDashboard/ReportPage/ReportPage";
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +50,12 @@ export const router = createBrowserRouter([
           path:'/survey/details/:id',
           element:<SurveyDetails></SurveyDetails>,
           loader: ({params}) => fetch(`http://localhost:5000/survey/${params.id}`)
+        },{
+          path:'/pro',
+          element:<Pro></Pro>
+        },{
+          path:'/payment',
+          element:<Payment></Payment>
         }
       ]
     },
@@ -70,6 +80,9 @@ export const router = createBrowserRouter([
         },{
           path:'surveyResponse',
           element:<SurveyResponse></SurveyResponse>
+        },{
+          path:'report',
+          element:<ReportPage></ReportPage>
         }
       ]
 
@@ -88,6 +101,9 @@ export const router = createBrowserRouter([
         },{
           path:'surveyStatus',
           element:<SurveyStatus></SurveyStatus>
+        },{
+          path:'paymentHistory',
+          element:<PaymentHistory></PaymentHistory>
         }
       ]
     }

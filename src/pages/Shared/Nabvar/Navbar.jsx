@@ -6,6 +6,8 @@ import { AuthContext } from "../../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import useSurveyor from "../../../hooks/useSurveyor";
 import useAdmin from "../../../hooks/useAdmin";
+import useUserRole from "../../../hooks/useUserRole";
+import useRegularUser from "../../../hooks/useRegularUser";
 
 
 const Navbar = () => {
@@ -15,6 +17,9 @@ const Navbar = () => {
     
     const [isSurveyor]=useSurveyor()
     const [isAdmin]=useAdmin()
+    // const [proUser]=useUserRole()
+    const [regularUser]=useRegularUser()
+    console.log(regularUser,"regular user from navbar")
     console.log(isAdmin,"admin from navbar")
     console.log(isSurveyor,"surveyor from nav")
     const navOptions = <>
@@ -26,6 +31,9 @@ const Navbar = () => {
         {
              isAdmin&& <li className="font-Sora font-semibold"><Link to="/adminDashboard/surveyResponseAdmin">ADashboard</Link></li>
 
+        }
+        {
+            regularUser&& <li className="font-Sora font-semibold"><Link to="/pro">Pro</Link></li>
         }
        
 
@@ -51,7 +59,7 @@ const Navbar = () => {
     }
     return (
         <div className="nav">
-            <div className="navbar ">
+            <div className="navbar flex-col lg:flex-row md:flex-row ">
             <div className="navbar-start">
                 <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -73,13 +81,15 @@ const Navbar = () => {
            
             {
             user ? <>
+            <span className="mx-4 font-Sora font-semibold">{user?.displayName}</span>
              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+             
                 <div className="w-10 rounded-full">
                 <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
                 </div>
             </label>
-                <span>{user?.displayName}</span>
-                <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
+                
+                <button onClick={handleLogOut} className="btn btn-outline">LogOut</button>
             </> : <>
                 <NavLink to="/login"><button className="font-Sora font-bold text-2xl btn btn-warning">Login</button></NavLink>
             </>

@@ -26,6 +26,9 @@ const AdminHome = () => {
                        <li className="font-Sora font-semibold">
                             <NavLink to="/adminDashboard/surveyStatus">Survey Status</NavLink>
                         </li>
+                       <li className="font-Sora font-semibold">
+                            <NavLink to="/adminDashboard/paymentHistory">Payment Information</NavLink>
+                        </li>
                         <li className="font-Sora font-semibold">
                             <NavLink to="/">Home</NavLink>
                         </li>

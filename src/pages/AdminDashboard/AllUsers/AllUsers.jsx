@@ -96,7 +96,7 @@ const AllUsers = () => {
       <div className="overflow-x-auto">
         <table className="table ">
           <thead>
-            <tr>
+            <tr className="bg-emerald-100">
               <th></th>
               <th>User</th>
               
@@ -107,7 +107,7 @@ const AllUsers = () => {
           </thead>
           <tbody>
             {allUsers.map((ress, idx) => (
-              <tr className="font-Sora text-zinc-900" key={idx}>
+              <tr className="font-Sora text-zinc-900 border-b-emerald-800" key={idx}>
                 <th>{idx + 1}</th>
                 <td>{ress.name}</td>
                 <td>{ress.role}</td>
