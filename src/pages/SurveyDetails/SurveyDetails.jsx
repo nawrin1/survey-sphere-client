@@ -2,11 +2,15 @@
 
 import { TextField } from "@mui/material";
 import Select from "react-select"
-import { useLoaderData, useLocation } from "react-router-dom";
-// import useAxiosSecure from "../../../hooks/useAxiosSecure";
-// import { useContext } from "react";
-// import { AuthContext } from "../../../provider/AuthProvider";
-// import { useForm } from "react-hook-form";
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import {
+  BarChart,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  Bar
+} from "recharts";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useContext, useEffect, useState } from "react";
@@ -23,6 +27,9 @@ import { Popover } from '@headlessui/react'
 const SurveyDetails = () => {
     const [userRole,setUserRole]=useState(true)
     const[enableVote,setEnableVote]=useState(false)
+    const navigate=useNavigate()
+
+    const [data,setData]=useState([])
     const [proUser]=useUserRole()
 
     const {user}=useContext(AuthContext)
@@ -35,22 +42,50 @@ const SurveyDetails = () => {
 
    
    
-   
+    const {
+      title,
+      category,
+      description,
+      ques1,
+      ques2,
+      ques3,
+      surveyor,
+     
+      
+      deadline,
+      _id
+      
+     
+    }= useLoaderData();
+    console.log(deadline,">>>>>>")
     useEffect(()=>{
+        if(deadline<moment().format('YYYY-MM-DD')){
+        console.log("expired")
+        setEnableVote(true)
+
+        }
+        else{
+          console.log('not expired')
+        }
         if (proUser){
             setUserRole(false)
 
         }
-        
-        console.log(vote,"voeeeeeee")
-        // const voted=vote.find(votes=>votes.votedby==user.email)
-        const votedSurvey=vote.filter(votes=>votes.votedby==user.email)
-        console.log(votedSurvey,"my voted")
-        const voted=votedSurvey.find(vote=>vote.title==title)
-        if(voted){
-            setEnableVote(true)
+        if (user){
+          console.log(vote,"voeeeeeee")
+      
+          const votedSurvey=vote.filter(votes=>votes.votedby==user.email)
+          console.log(votedSurvey,"my voted")
+          const voted=votedSurvey.find(vote=>vote.title==title)
+          if(voted){
+              setEnableVote(true)
+          }
+          console.log(enableVote,"enable")
+
         }
-        console.log(enableVote,"enable")
+        
+     
+        
        
 
     },[proUser,vote,enableVote,user?.email])
@@ -58,21 +93,7 @@ const SurveyDetails = () => {
 
 
   
-    const {
-        title,
-        category,
-        description,
-        ques1,
-        ques2,
-        ques3,
-        surveyor,
-       
-        
-        deadline,
-        _id
-        
-       
-      }= useLoaderData();
+   
       const { register, handleSubmit, reset, formState: { errors },control, setError } = useForm();
       const axiosSecure=useAxiosSecure()
       
@@ -81,14 +102,12 @@ const SurveyDetails = () => {
       console.log(comment,"comcom")
 
       const onSubmit=async(data)=>{
-          console.log(data)
-        //   if(data.comment){
-        //     const comments=data.comment
-        //   }
-        //   else{
-        //     const comments=null
+        if(!user){
+          navigate('/')
 
-        //   }
+        }
+          console.log(data)
+       
           const survey = { title: data.title, category: data.category,description:data.description,ques1:data.ques1,ques2:data.ques2,ques3:data.ques3,deadline:data.deadline,ans1:data.ans1.value,ans2:data.ans2.value,ans3:data.ans3.value,likeordislike:data.likeordislike.value,comments:data.comments,reports:data.reports,votedby:user.email,surveyor:surveyor,votedTime:votedTime};
           console.log(survey)
           if(data.comments){
@@ -133,14 +152,28 @@ const SurveyDetails = () => {
                 refetch()
 
           }
-        
       }
+      const handleChart=(title)=>{
+        axiosSecure.get(`/getSurveyChartData/${title}`)
+          .then(response => {
+            const { yes, no } = response.data;
+            console.log(yes, no);
+            const data = [{name: 'YES', uv: yes},{name: 'NO', uv: no} ];
+            setData(data)
+          })
+          .catch(error => {
+            console.error('Error fetching survey data:', error);
+          });
+          document.getElementById(`my_modal_${title}`).showModal()
+  
+      }
+
     
     return (
         <div>
         <div className=" min-h-screen max-w-6xl mx-auto ">
            <div className="">
-           <h2 className="font-Sora font-semibold text-4xl text-center">SURVEY DETAILS</h2>
+           <h2 className="font-Sora font-semibold text-4xl text-center mt-4">SURVEY DETAILS</h2>
               
                    
                <div className=" shadow-2xl">
@@ -203,21 +236,7 @@ const SurveyDetails = () => {
 
                            </div>
                            <div>
-                           {/* <Controller
-        name="ans1"
-        control={control}
-        render={({ field }) => (
-          <Select
-            {...field}
-            options={[
-              { value: "YES", label: "YES" },
-              { value: "NO", label: "NO" },
-             
-            ]}
-          />
-        )}
-        
-      /> */}
+                          
      <Controller
           name="ans1"
           control={control}
@@ -271,21 +290,7 @@ const SurveyDetails = () => {
                            })} placeholder="Set your second question..."  />
                             </div>
                             <div>
-                            {/* <Controller
-        name="ans2"
-        control={control}
-        render={({ field }) => (
-          <Select
-            {...field}
-            options={[
-              { value: "YES", label: "YES" },
-              { value: "NO", label: "NO" },
-             
-            ]}
-          />
-        )}
-        
-      /> */}
+                           
       <Controller
           name="ans2"
           control={control}
@@ -335,21 +340,7 @@ const SurveyDetails = () => {
                            })} placeholder="Set your third question..."  />
                           </div>
                           <div>
-                          {/* <Controller
-                            name="ans3"
-                            control={control}
-                            render={({ field }) => (
-                            <Select
-                                {...field}
-                                options={[
-                                { value: "YES", label: "YES" },
-                                { value: "NO", label: "NO" },
-                                
-                                ]}
-                            />
-                            )}
-                            
-                        /> */}
+                         
                         <Controller
           name="ans3"
           control={control}
@@ -420,21 +411,7 @@ const SurveyDetails = () => {
 
                            <div>
                             <h2 className="text-3xl font-Sora font-bold text-blue-700 mt-8">LIKE OR DISLIKE?</h2>
-                           {/* <Controller
-        name="likeordislike"
-        control={control}
-        render={({ field }) => (
-          <Select
-            {...field}
-            options={[
-              { value: "LIKE", label: "LIKE" },
-              { value: "DISLIKE", label: "DISLIKE" },
-             
-            ]}
-          />
-        )}
-        
-      /> */}
+                          
       <Controller
           name="likeordislike"
           control={control}
@@ -488,17 +465,7 @@ const SurveyDetails = () => {
                                 />
                                     
                                 </div>
-                           
-                          
-                          
-
-
-                          
-                      
-                           
-                          
-                         
-                           
+    
                        </div>
                        {user ? (
   <>
@@ -506,8 +473,9 @@ const SurveyDetails = () => {
       <input className="btn btn-primary font-Sora font-semibold" disabled={enableVote} type="submit" value="VOTE" />
     </div>
   </>
-) : (
+) : (<>
   <p className="text-red-600 text-center text-2xl my-4 font-Sora font-medium">Please log in to vote.</p>
+  <Link to='/login'><button className="btn btn-accent w-[50%] flex place-items-center mx-auto justify-center">Go to Login</button></Link></>
 )}
                        
                        
@@ -518,9 +486,14 @@ const SurveyDetails = () => {
                <div>
                 <h2 className="font-Sora text-2xl text-blue-700 mt-8 my-6">All Comments</h2>
                 <Popover className="relative">
-                <Popover.Button className="justify-center bg-slate-800 text-white btn btn-outline">
+                  {
+                    user?<><Popover.Button className="justify-center bg-slate-800 text-white btn btn-outline">
+                    Click to see comments
+                    </Popover.Button></>:<><Popover.Button disabled={true} className="justify-center bg-slate-800 text-white btn btn-outline">
             Click to see comments
-            </Popover.Button>
+            </Popover.Button></>
+                  }
+                
 
             <Popover.Panel className="">
             <div className="grid grid-cols-1 bg-white border rounded p-4">
@@ -538,11 +511,34 @@ const SurveyDetails = () => {
 </Popover>
   
                </div>
+               {
+                user?<button disabled={!enableVote}onClick={()=>handleChart(title)}className="btn btn-secondary">Chart</button>:<button disabled={true}onClick={()=>handleChart(title)}className="btn btn-secondary">Chart</button>
+               }
+               {/* <button disabled={!enableVote}onClick={()=>handleChart(title)}className="btn btn-secondary">Chart</button> */}
+               <dialog id={`my_modal_${title}`} className="modal">
+  <div className="modal-box">
+    <h3 className="font-bold text-lg">Chart</h3>
+    <BarChart width={400} height={300} data={data}>
+    <XAxis dataKey="name" stroke="#8884d8" />
+    <YAxis />
+    <Tooltip />
+    <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+    <Bar dataKey="uv" fill="#8884d8" barSize={30} />
+  </BarChart>
+    <div className="modal-action">
+      <form method="dialog">
+        {/* if there is a button in form, it will close the modal */}
+        <button className="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
            </div>
        </div>
        
    </div>
     );
+                
 };
 
 export default SurveyDetails;

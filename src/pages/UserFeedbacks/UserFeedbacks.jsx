@@ -48,7 +48,7 @@ const UserFeedbacks = () => {
 
   return (
     <div>
-      <h2 className="text-2xl font-Sora font-bold text-center text-blue-800">User Feedbacks</h2>
+      <h2 className="text-2xl font-Sora font-bold text-center text-blue-800 my-8">User Feedbacks</h2>
       <div className="overflow-x-auto">
         <table className="table ">
           <thead>
@@ -66,7 +66,7 @@ const UserFeedbacks = () => {
                 <td>{com.title}</td>
                 <td>{com.votedby}</td>
                 <td>
-                  <Button onClick={() => handleOpen(idx)}>Feedback</Button>
+                  <Button style={{ backgroundColor: 'violet', color: 'white', fontWeight: 'bold' }} onClick={() => handleOpen(idx)}>Feedback</Button>
                   <Modal
                     open={openModals[idx]}
                     onClose={() => handleClose(idx)}
@@ -74,10 +74,10 @@ const UserFeedbacks = () => {
                     aria-describedby="modal-modal-description"
                   >
                     <Box sx={style}>
-                      <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Text in a modal
+                      <Typography id="modal-modal-title" variant="h6" component="h2" style={{fontFamily:'Sora',color:'blueviolet'}}>
+                       User Feedback
                       </Typography>
-                      <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                      <Typography id="modal-modal-description" sx={{ mt: 2, fontFamily:'Sora' }}>
                         {com.comments}
                       </Typography>
                     </Box>

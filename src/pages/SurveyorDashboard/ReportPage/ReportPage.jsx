@@ -13,7 +13,7 @@ const ReportPage = () => {
             <div>
       <h2 className="text-2xl font-Sora font-bold text-center text-blue-800">Reports</h2>
       <div className="overflow-x-auto">
-        <table className="table ">
+        <table className="table table-xs overflow-x-auto">
           <thead>
             <tr className="bg-blue-100">
               <th></th>

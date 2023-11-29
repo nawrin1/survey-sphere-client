@@ -40,7 +40,7 @@ const SurveyResponse = () => {
         <div>
              <div>
       <h2 className="text-2xl font-Sora font-bold text-center text-blue-800">Survey Response</h2>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto table-xs ">
         <table className="table ">
           <thead>
             <tr>

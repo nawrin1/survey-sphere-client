@@ -94,7 +94,7 @@ const AllUsers = () => {
              <div>
 
       <div className="overflow-x-auto">
-        <table className="table ">
+        <table className="table table-xs overflow-x-hidden ">
           <thead>
             <tr className="bg-emerald-100">
               <th></th>

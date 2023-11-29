@@ -10,7 +10,7 @@ const PaymentHistory = () => {
              <div>
      
       <div className="overflow-x-auto bg-slate-200">
-        <table className="table ">
+        <table className="table table-xs overflow-x-hidden">
           <thead >
             <tr className="border-b-black">
               <th></th>
@@ -22,7 +22,7 @@ const PaymentHistory = () => {
           </thead>
           <tbody>
             {payment.map((res, idx) => (
-              <tr className="font-Sora text-zinc-900 border-b-black" key={idx}>
+              <tr className="font-Sora text-zinc-900 border-b-black h-[50px]" key={idx}>
                 <th>{idx + 1}</th>
                 <td>{res.email}</td>
                 <td>{res.paymentTime}</td>

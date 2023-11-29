@@ -1,5 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
+import { LuMessageSquareDashed } from "react-icons/lu";
 
+import { HiOutlineHome } from "react-icons/hi";
 
 const AdminHome = () => {
     return (
@@ -15,23 +17,23 @@ const AdminHome = () => {
   <div className="drawer-side">
     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label> 
     <ul className="menu p-4 w-60 min-h-full bg-indigo-200 text-base-content ">
-      
+                       <li className="font-Sora font-semibold">
+                            <NavLink to="/"><div className=" mb-[2px] text-[16px]"><HiOutlineHome></HiOutlineHome></div>Home</NavLink>
+                        </li>
                    
                        <li className="font-Sora font-semibold">
-                            <NavLink to="/adminDashboard/surveyResponseAdmin">Survey Response</NavLink>
+                            <NavLink to="/adminDashboard/surveyResponseAdmin"><div><LuMessageSquareDashed></LuMessageSquareDashed></div>Survey Response</NavLink>
                         </li>
                        <li className="font-Sora font-semibold">
-                            <NavLink to="/adminDashboard/allUsers">All Users</NavLink>
+                            <NavLink to="/adminDashboard/allUsers"><div><LuMessageSquareDashed></LuMessageSquareDashed></div>All Users</NavLink>
                         </li>
                        <li className="font-Sora font-semibold">
-                            <NavLink to="/adminDashboard/surveyStatus">Survey Status</NavLink>
+                            <NavLink to="/adminDashboard/surveyStatus"><div><LuMessageSquareDashed></LuMessageSquareDashed></div>Survey Status</NavLink>
                         </li>
                        <li className="font-Sora font-semibold">
-                            <NavLink to="/adminDashboard/paymentHistory">Payment Information</NavLink>
+                            <NavLink to="/adminDashboard/paymentHistory"><div><LuMessageSquareDashed></LuMessageSquareDashed></div>Payment Information</NavLink>
                         </li>
-                        <li className="font-Sora font-semibold">
-                            <NavLink to="/">Home</NavLink>
-                        </li>
+                       
 
     </ul>
   

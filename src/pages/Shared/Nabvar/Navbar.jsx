@@ -26,10 +26,10 @@ const Navbar = () => {
         <li className="font-Sora font-semibold"><NavLink to='/'>Home</NavLink></li>
         <li className="font-Sora font-semibold"><NavLink  to="/survey">Survey Page</NavLink></li>
         {
-            isSurveyor && <li className="font-Sora font-semibold"><Link to="/surveyDashboard/surveyCreate">SDashboard</Link></li>
+            isSurveyor && <li className="font-Sora font-semibold"><Link to="/surveyDashboard/surveyCreate">Surveyor Dashboard</Link></li>
         }
         {
-             isAdmin&& <li className="font-Sora font-semibold"><Link to="/adminDashboard/surveyResponseAdmin">ADashboard</Link></li>
+             isAdmin&& <li className="font-Sora font-semibold"><Link to="/adminDashboard/surveyResponseAdmin">Admin Dashboard</Link></li>
 
         }
         {

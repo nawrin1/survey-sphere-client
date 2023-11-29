@@ -4,6 +4,7 @@ import EachSurvey from "../EachSurvey/EachSurvey";
 
 const SurveySection = () => {
     const [survey,loading]=useSurvey()
+    console.log(survey,"survey from survey sectin")
     console.log(survey)
     return (
      
