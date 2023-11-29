@@ -24,7 +24,7 @@ const AllSurvey = () => {
 
                 {
                     survey.map((item,idx)=><>
-                        <div className="p-4 h-[230px] bg-slate-200 flex flex-col rounded-lg shadow-md shadow-slate-600">
+                        <div className="p-4 h-[250px] bg-slate-200 flex flex-col rounded-lg shadow-md shadow-slate-600">
         <div className="h-[50px] bg-slate-50 rounded-lg border-l-4 border-gray-800">
             <h2 className="text-xl font-Sora font-bold text-center text-blue-900 ">{item.title}</h2>
         </div>
@@ -33,12 +33,16 @@ const AllSurvey = () => {
             <p className="font-Sora text-slate-600">{item.description.slice(0, 50)}.....</p>
             <div className="mt-2 flex justify-between">
                 <div>
-                <button className=" text-[14px] font-medium font-Sora mt-2">Voted: {item.votedNumber}</button>
+                <button className=" text-[14px] font-bold font-Sora mt-4 text-emerald-800">Voted: {item.votedNumber}</button>
                 </div>
-                <div className="p-2 bg-white rounded-3xl">
+                <div>
+                <button className=" text-[14px] font-bold font-Sora mt-4  text-emerald-800 ">Status: {item.status}</button>
+                </div>
+                 
+            </div>
+            <div className="p-[4px] bg-white rounded-3xl w-[27%] mt-2 ">
                 <Link to={`/surveyDashboard/update/${item._id}`}><button className=" text-[14px] font-semibold font-Sora">UPDATE</button></Link>
                 </div>
-            </div>
         </div>
     </div>
                     </>)
