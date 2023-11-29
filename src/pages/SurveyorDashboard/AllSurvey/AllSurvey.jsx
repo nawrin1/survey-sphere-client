@@ -19,7 +19,7 @@ const AllSurvey = () => {
 
     return (
         <div className="mb-10">
-            <h2 className="text-2xl font-Sora font-bold text-center text-blue-800 my-8">All Survey</h2>
+            <h2 className="text-2xl font-Sora font-bold text-center text-blue-800 my-8"> Survey you created</h2>
             <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols- gap-4 max-w-4xl mx-auto">
 
                 {

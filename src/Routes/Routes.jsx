@@ -24,6 +24,8 @@ import Pro from "../pages/Pro/Pro";
 import Payment from "../pages/Payment/Payment";
 import PaymentHistory from "../pages/AdminDashboard/PaymentHistory/PaymentHistory";
 import ReportPage from "../pages/SurveyorDashboard/ReportPage/ReportPage";
+import AdminRoute from "./AdminRoutes";
+import SurveyorRoute from "./SurveyorRoute";
 
 export const router = createBrowserRouter([
     {
@@ -52,7 +54,7 @@ export const router = createBrowserRouter([
           loader: ({params}) => fetch(`http://localhost:5000/survey/${params.id}`)
         },{
           path:'/pro',
-          element:<Pro></Pro>
+          element:<PrivateRoute><Pro></Pro></PrivateRoute>
         },{
           path:'/payment',
           element:<Payment></Payment>
@@ -65,24 +67,24 @@ export const router = createBrowserRouter([
       children:[
         {
           path:'surveyCreate',
-          element:<CreateSurvey></CreateSurvey>
+          element:<SurveyorRoute><CreateSurvey></CreateSurvey></SurveyorRoute>
         },
         {
           path:'allSurveyPage',
           element:<AllSurvey></AllSurvey>
         },{
           path:'update/:id',
-          element:<Update></Update>,
+          element:<SurveyorRoute><Update></Update></SurveyorRoute>,
           loader: ({params}) => fetch(`http://localhost:5000/surveys/${params.id}`)
         },{
           path:'userFeedbacks',
           element:<UserFeedbacks></UserFeedbacks>
         },{
           path:'surveyResponse',
-          element:<SurveyResponse></SurveyResponse>
+          element:<SurveyorRoute><SurveyResponse></SurveyResponse></SurveyorRoute>
         },{
           path:'report',
-          element:<ReportPage></ReportPage>
+          element:<SurveyorRoute><ReportPage></ReportPage></SurveyorRoute>
         }
       ]
 
@@ -93,17 +95,17 @@ export const router = createBrowserRouter([
       children:[
         {
           path:'surveyResponseAdmin',
-          element:<SurveyResponseAdmin></SurveyResponseAdmin>
+          element:<AdminRoute><SurveyResponseAdmin></SurveyResponseAdmin></AdminRoute>
         },{
           path:'allUsers',
-          element:<AllUsers></AllUsers>
+          element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
           
         },{
           path:'surveyStatus',
-          element:<SurveyStatus></SurveyStatus>
+          element:<AdminRoute><SurveyStatus></SurveyStatus></AdminRoute>
         },{
           path:'paymentHistory',
-          element:<PaymentHistory></PaymentHistory>
+          element:<AdminRoute><PaymentHistory></PaymentHistory></AdminRoute>
         }
       ]
     }

@@ -48,9 +48,9 @@ const UserFeedbacks = () => {
 
   return (
     <div>
-      <h2 className="text-2xl font-Sora font-bold text-center text-blue-800 my-8">User Feedbacks</h2>
+      <h2 className="text-2xl font-Sora font-bold text-center text-blue-800 my-8">User Feedbacks of your created Survey</h2>
       <div className="overflow-x-auto">
-        <table className="table ">
+        <table className="table overflow-x-scroll table-xs">
           <thead>
             <tr>
               <th></th>

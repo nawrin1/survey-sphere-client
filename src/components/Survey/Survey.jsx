@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import './Survey.css'
 
 const Survey = ({item}) => {
     // console.log(item,"...")
-    const {category,description,title,votedNumber,_id}=item
+    const {category,description,title,votedNumber,_id,liked,disliked}=item
     return (
 <div>
     <div className="p-4 h-[350px] bg-indigo-950 flex flex-col rounded-lg shadow-md shadow-slate-600">
@@ -15,14 +16,25 @@ const Survey = ({item}) => {
             <p className="font-Sora text-slate-300">{description.slice(0, 150)}.....</p>
             <div className="mt-6 flex justify-between">
                 <div>
-                <button className="btn outline-dashed text-[16px] font-medium font-Sora">Voted: {votedNumber}</button>
+                <button className="p-2 w-[90px] rounded-2xl bg-slate-200 text-[16px] font-medium font-Sora">Vote: {votedNumber}</button>
                 </div>
                 <div>
-               <Link to={`details/${_id}`}> <button className="btn outline-dashed text-[16px] font-medium font-Sora outline-white">Details</button></Link>
+                <button className=" p-2 w-[90px] rounded-2xl bg-slate-200 text-[16px] font-medium font-Sora">Like: {liked}</button>
+                </div>
+                <div>
+                <button className="p-2 w-[100px] rounded-2xl bg-slate-200 text-[16px] font-medium font-Sora">Dislike: {disliked}</button>
+                </div>
+            
+              
+                <div>
+               <Link to={`details/${_id}`}> <button className="button p-2 w-[90px] rounded-2xl bg-slate-200 text-[16px] font-medium font-Sora outline-white">Details</button></Link>
 
                 </div>
 
             </div>
+           
+           
+                
         </div>
     </div>
 </div>

@@ -7,7 +7,7 @@ const PrivateRoute = ({children}) => {
     const {user,loading}=useContext(AuthContext)
 
     if(loading){
-<div className='flex justify-center items-center min-h-screen place-content-center mx-auto place-items-center'>        return <Watch
+return <div className='flex justify-center items-center min-h-screen place-content-center mx-auto place-items-center'><Watch
         height="80"
         width="80"
         radius="48"

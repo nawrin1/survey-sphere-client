@@ -97,9 +97,9 @@ const CheckoutForm = () => {
                     style: {
                         base: {
                             fontSize: '16px',
-                            color: '#424770',
+                            color: '#484d7a',
                             '::placeholder': {
-                                color: '#aab7c4',
+                                color: '#484d7a',
                             },
                         },
                         invalid: {

@@ -78,6 +78,7 @@ const SurveyDetails = () => {
           console.log(votedSurvey,"my voted")
           const voted=votedSurvey.find(vote=>vote.title==title)
           if(voted){
+            console.log('probb')
               setEnableVote(true)
           }
           console.log(enableVote,"enable")
@@ -108,7 +109,7 @@ const SurveyDetails = () => {
         }
           console.log(data)
        
-          const survey = { title: data.title, category: data.category,description:data.description,ques1:data.ques1,ques2:data.ques2,ques3:data.ques3,deadline:data.deadline,ans1:data.ans1.value,ans2:data.ans2.value,ans3:data.ans3.value,likeordislike:data.likeordislike.value,comments:data.comments,reports:data.reports,votedby:user.email,surveyor:surveyor,votedTime:votedTime};
+          const survey = { title: data.title, category: data.category,description:data.description,ques1:data.ques1,ques2:data.ques2,ques3:data.ques3,deadline:data.deadline,ans1:data.ans1.value,ans2:data.ans2.value,ans3:data.ans3.value,likeordislike:data.likeordislike.value,comments:data.comments,reports:data.reports,votedby:user.email,surveyor:surveyor,votedTime:votedTime,surveyId:_id};
           console.log(survey)
           if(data.comments){
             const survey1 = { title: data.title, category: data.category,description:data.description,ques1:data.ques1,ques2:data.ques2,ques3:data.ques3,deadline:data.deadline,ans1:data.ans1.value,ans2:data.ans2.value,ans3:data.ans3.value,likeordislike:data.likeordislike.value,comments:data.comments,votedby:user.email,surveyor:surveyor,votedTime:votedTime};
@@ -140,7 +141,7 @@ const SurveyDetails = () => {
           console.log(sData.data)
           if(sData.data.insertedId){
               
-              // reset();
+              reset();
               Swal.fire({
                   position: "top-end",
                   icon: "success",
@@ -151,7 +152,9 @@ const SurveyDetails = () => {
                 setEnableVote(true)
                 refetch()
 
+
           }
+
       }
       const handleChart=(title)=>{
         axiosSecure.get(`/getSurveyChartData/${title}`)
@@ -168,10 +171,10 @@ const SurveyDetails = () => {
   
       }
 
-    
+    console.log(enableVote,"whatt")
     return (
         <div>
-        <div className=" min-h-screen max-w-6xl mx-auto ">
+        <div className=" min-h-screen max-w-6xl mx-auto mb-10 mt-5 ">
            <div className="">
            <h2 className="font-Sora font-semibold text-4xl text-center mt-4">SURVEY DETAILS</h2>
               
@@ -483,6 +486,7 @@ const SurveyDetails = () => {
                   
                    
                </div>
+               <div className="flex justify-between">
                <div>
                 <h2 className="font-Sora text-2xl text-blue-700 mt-8 my-6">All Comments</h2>
                 <Popover className="relative">
@@ -511,8 +515,10 @@ const SurveyDetails = () => {
 </Popover>
   
                </div>
+               <div>
+               <h2 className="text-2xl font-Sora font-semibold text-gray-700 mt-8 mb-6">Show Chart</h2>
                {
-                user?<button disabled={!enableVote}onClick={()=>handleChart(title)}className="btn btn-secondary">Chart</button>:<button disabled={true}onClick={()=>handleChart(title)}className="btn btn-secondary">Chart</button>
+                user?<button disabled={!enableVote}onClick={()=>handleChart(title)}className=" btn w-full btn-accent p-4 rounded-2xl">Chart</button>:<button disabled={true}onClick={()=>handleChart(title)}className="btn btn-secondary">Chart</button>
                }
                {/* <button disabled={!enableVote}onClick={()=>handleChart(title)}className="btn btn-secondary">Chart</button> */}
                <dialog id={`my_modal_${title}`} className="modal">
@@ -533,6 +539,8 @@ const SurveyDetails = () => {
     </div>
   </div>
 </dialog>
+</div>
+</div>
            </div>
        </div>
        

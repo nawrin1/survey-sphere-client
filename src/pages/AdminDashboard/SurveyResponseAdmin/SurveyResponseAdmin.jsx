@@ -36,8 +36,8 @@ const SurveyResponseAdmin = () => {
             <div>
              <div>
       <h2 className="text-2xl font-Sora font-bold text-center text-blue-800 my-8">Survey Response</h2>
-      <div className="overflow-x-auto">
-        <table className="table table-xs overflow-x-hidden ">
+      <div className="overflow-x-auto w-screen lg:w-auto">
+        <table className="table table-xs overflow-x-scroll ">
           <thead className=" text-[13px] font-semibold font-Sora">
             <tr>
               <th></th>

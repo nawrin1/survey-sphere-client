@@ -59,7 +59,7 @@ const Navbar = () => {
     }
     return (
         <div className="nav">
-            <div className="navbar flex-col lg:flex-row md:flex-row ">
+            <div className="navbar flex-col lg:flex-row md:flex-row  max-w-6xl mx-auto">
             <div className="navbar-start">
                 <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">

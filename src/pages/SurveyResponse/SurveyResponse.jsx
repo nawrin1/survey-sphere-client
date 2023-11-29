@@ -39,8 +39,8 @@ const SurveyResponse = () => {
     return (
         <div>
              <div>
-      <h2 className="text-2xl font-Sora font-bold text-center text-blue-800">Survey Response</h2>
-      <div className="overflow-x-auto table-xs ">
+      <h2 className="text-2xl font-Sora font-bold text-center text-blue-800 my-8">Response of Survey you created</h2>
+      <div className="overflow-x-auto table-xs w-screen lg:w-auto ">
         <table className="table ">
           <thead>
             <tr>
