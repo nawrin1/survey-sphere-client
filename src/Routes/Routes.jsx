@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
         },{
           path:'/survey/details/:id',
           element:<SurveyDetails></SurveyDetails>,
-          loader: ({params}) => fetch(`http://localhost:5000/survey/${params.id}`)
+          loader: ({params}) => fetch(`https://survey-sphere-server-five.vercel.app/survey/${params.id}`)
         },{
           path:'/pro',
           element:<PrivateRoute><Pro></Pro></PrivateRoute>
@@ -75,7 +75,7 @@ export const router = createBrowserRouter([
         },{
           path:'update/:id',
           element:<SurveyorRoute><Update></Update></SurveyorRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/surveys/${params.id}`)
+          loader: ({params}) => fetch(`https://survey-sphere-server-five.vercel.app/surveys/${params.id}`)
         },{
           path:'userFeedbacks',
           element:<SurveyorRoute><UserFeedbacks></UserFeedbacks></SurveyorRoute>
