@@ -19,9 +19,9 @@ const Navbar = () => {
     const [isAdmin]=useAdmin()
     // const [proUser]=useUserRole()
     const [regularUser]=useRegularUser()
-    console.log(regularUser,"regular user from navbar")
-    console.log(isAdmin,"admin from navbar")
-    console.log(isSurveyor,"surveyor from nav")
+    // console.log(regularUser,"regular user from navbar")
+    // console.log(isAdmin,"admin from navbar")
+    // console.log(isSurveyor,"surveyor from nav")
     const navOptions = <>
         <li className="font-Sora font-semibold"><NavLink to='/'>Home</NavLink></li>
         <li className="font-Sora font-semibold"><NavLink  to="/survey">Survey Page</NavLink></li>

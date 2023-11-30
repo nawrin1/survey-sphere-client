@@ -22,6 +22,8 @@ import useVote from "../../hooks/useVote";
 import useComment from "../../hooks/useComment";
 
 import { Popover } from '@headlessui/react'
+import useSurveyor from "../../hooks/useSurveyor";
+import useAdmin from "../../hooks/useAdmin";
 
 
 const SurveyDetails = () => {
@@ -31,9 +33,14 @@ const SurveyDetails = () => {
 
     const [data,setData]=useState([])
     const [proUser]=useUserRole()
+    const [isSurveyor]=useSurveyor()
+    const [isAdmin]=useAdmin()
+
 
     const {user}=useContext(AuthContext)
     console.log(proUser,"is pro user?")
+    console.log(isAdmin,"admin?")
+    console.log(isSurveyor,"surveyor??")
     const [vote,voteLoading,isFetched]=useVote()
     
   
@@ -67,6 +74,11 @@ const SurveyDetails = () => {
         else{
           console.log('not expired')
         }
+        if(isAdmin ||isSurveyor){
+          setEnableVote(true)
+
+        }
+       
         if (proUser){
             setUserRole(false)
 

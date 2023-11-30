@@ -2,21 +2,23 @@
 
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import useAxiosPublic from "./useAxiosPublic";
 
 
 const useSurvey = () => {
+    const axiosPublic=useAxiosPublic()
   
 
-    const {data: survey = [], isPending: loading } = useQuery({
+    const {data: survey = [], isPending: loading,isFetched } = useQuery({
         queryKey: ['survey'], 
         queryFn: async() =>{
-            const res = await axios.get('http://localhost:5000/allSurvey');
+            const res = await axiosPublic.get('/allSurvey');
             return res.data;
         }
     })
 
 
-    return [survey, loading]
+    return [survey, loading,isFetched]
 }
 
 export default useSurvey;

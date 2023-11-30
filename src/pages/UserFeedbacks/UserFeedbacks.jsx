@@ -6,20 +6,24 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { Watch } from "react-loader-spinner";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const UserFeedbacks = () => {
   const { user } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
+  const axiosSecure=useAxiosSecure()
 
-  const { data: comment = [] } = useQuery({
+  const { data: comment = [],isFetched} = useQuery({
     queryKey: ['allcomment', user],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/comment/${user.email}`);
+      const res = await axiosSecure.get(`/comment/${user.email}`);
       return res.data;
     }
   });
 
-  // Use an array of boolean values to track the open/close state for each modal
+
+
   const [openModals, setOpenModals] = useState(Array(comment.length).fill(false));
 
   const handleOpen = (idx) => {
@@ -45,10 +49,22 @@ const UserFeedbacks = () => {
     boxShadow: 24,
     p: 4,
   };
+  if(!isFetched){
+    return <div className='flex justify-center items-center min-h-screen place-content-center mx-auto place-items-center '><Watch
+    height="80"
+    width="80"
+    radius="48"
+    color="#4fa94d"
+    ariaLabel="watch-loading"
+    wrapperStyle={{}}
+    wrapperClassName=""
+    visible={true}
+  /></div>
+}
 
   return (
     <div>
-      <h2 className="text-2xl font-Sora font-bold text-center text-blue-800 my-8">User Feedbacks of your created Survey</h2>
+      <h2 className="text-2xl font-Sora font-bold text-center text-blue-800 my-8">--User Feedbacks of your created Survey--</h2>
       <div className="overflow-x-auto">
         <table className="table overflow-x-scroll table-xs">
           <thead>
@@ -68,11 +84,11 @@ const UserFeedbacks = () => {
                 <td>
                   <Button style={{ backgroundColor: 'violet', color: 'white', fontWeight: 'bold' }} onClick={() => handleOpen(idx)}>Feedback</Button>
                   <Modal
-                    open={openModals[idx]}
-                    onClose={() => handleClose(idx)}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                  >
+  open={openModals[idx] || false}
+  onClose={() => handleClose(idx)}
+  aria-labelledby="modal-modal-title"
+  aria-describedby="modal-modal-description"
+>
                     <Box sx={style}>
                       <Typography id="modal-modal-title" variant="h6" component="h2" style={{fontFamily:'Sora',color:'blueviolet'}}>
                        User Feedback

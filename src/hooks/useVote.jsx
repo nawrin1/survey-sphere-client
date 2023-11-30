@@ -9,7 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 const useVote = () => {
     const { user,loading } = useContext(AuthContext)
     const axiosSecure = useAxiosSecure();
-    const { data: vote=[], isPending: voteLoading,isFetched } = useQuery({
+    const { data: vote=[], isFetched } = useQuery({
         queryKey: [user?.email, 'vote'],
         enabled:!loading,
         queryFn: async () => {

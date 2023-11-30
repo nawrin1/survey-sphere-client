@@ -9,12 +9,12 @@ import { useQuery } from "@tanstack/react-query";
 const useReport = () => {
     const { user,loading } = useContext(AuthContext)
     const axiosSecure = useAxiosSecure();
-    const { data: report=[] } = useQuery({
+    const { data: report=[],isFetched } = useQuery({
         queryKey: [user?.email, 'report'],
         enabled:!loading,
         queryFn: async () => {
             try {
-                const res = await axiosSecure.get(`/unpublish`);
+                const res = await axiosSecure.get(`/unpublish?email=${user.email}`);
                 console.log(res.data, "unpublish from hook");
                 return res.data;
             } catch (error) {
@@ -24,7 +24,7 @@ const useReport = () => {
         }
     })
     console.log(report,"from")
-    return [report]
+    return [report,isFetched]
    
 };
 

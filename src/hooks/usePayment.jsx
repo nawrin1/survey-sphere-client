@@ -9,7 +9,7 @@ const usePayment = () => {
   
   
 
-    const {data: payment = [] } = useQuery({
+    const {data: payment = [],isFetched } = useQuery({
         queryKey: ['payment',user.email], 
         queryFn: async() =>{
             const res = await axiosSecure.get(`/payment`);
@@ -18,7 +18,7 @@ const usePayment = () => {
     })
 
 
-    return [payment]
+    return [payment,isFetched]
 }
 
 export default usePayment;

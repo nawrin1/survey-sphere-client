@@ -3,23 +3,36 @@ import { AuthContext } from "../../../provider/AuthProvider";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import { Watch } from "react-loader-spinner";
 
 
 const AllSurvey = () => {
     const {user}=useContext(AuthContext)
     const axiosPublic=useAxiosPublic()
-    const {data: survey = [], isPending: loadings } = useQuery({
+    const {data: survey = [], isPending: loadings,isFetched } = useQuery({
         queryKey: ['allsurvey',user], 
         queryFn: async() =>{
             const res = await axiosPublic.get(`/surveys?surveyor=${user.email}`);
             return res.data;
         }
     })
+    if(!isFetched){
+        return <div className='flex justify-center items-center min-h-screen place-content-center mx-auto place-items-center '><Watch
+        height="80"
+        width="80"
+        radius="48"
+        color="#4fa94d"
+        ariaLabel="watch-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+      /></div>
+    }
     console.log(survey,"from all survey")
 
     return (
         <div className="mb-10">
-            <h2 className="text-2xl font-Sora font-bold text-center text-blue-800 my-8"> Survey you created</h2>
+            <h2 className="text-2xl font-Sora font-bold text-center text-blue-800 my-8"> --Survey you created--</h2>
             <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols- gap-4 max-w-4xl mx-auto">
 
                 {
@@ -40,7 +53,7 @@ const AllSurvey = () => {
                 </div>
                  
             </div>
-            <div className="p-[4px] bg-white rounded-3xl w-[27%] mt-2 ">
+            <div className="p-[4px] bg-white w-[70px] rounded-3xl mt-2 ">
                 <Link to={`/surveyDashboard/update/${item._id}`}><button className=" text-[14px] font-semibold font-Sora">UPDATE</button></Link>
                 </div>
         </div>

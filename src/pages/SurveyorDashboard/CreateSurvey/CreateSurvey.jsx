@@ -34,7 +34,7 @@ const CreateSurvey = () => {
         <div>
              <div className=" min-h-screen ">
                 <div className="">
-                    <h2 className="font-Sora font-semibold text-4xl text-center">CREATE SURVEY</h2>
+                    <h2 className="font-Sora font-semibold text-4xl text-center my-7">--CREATE SURVEY--</h2>
                    
                         
                     <div className=" shadow-2xl">

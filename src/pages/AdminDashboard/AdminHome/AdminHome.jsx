@@ -9,7 +9,7 @@ const AdminHome = () => {
     <div className="drawer lg:drawer-open ">
   <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
   <div className="drawer-content  ">
-  <h2 className="relative text-3xl text-slate-500 font-Sora ml-9">Admin Dashboard</h2>
+  
    <Outlet></Outlet>
     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
   
@@ -17,6 +17,7 @@ const AdminHome = () => {
   <div className="drawer-side">
     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label> 
     <ul className="menu p-4 w-60 min-h-full bg-indigo-200 text-base-content ">
+    <h2 className="relative text-3xl text-slate-500 font-Sora text-center mb-7">Admin Dashboard</h2>
                        <li className="font-Sora font-semibold">
                             <NavLink to="/"><div className=" mb-[2px] text-[16px]"><HiOutlineHome></HiOutlineHome></div>Home</NavLink>
                         </li>

@@ -48,17 +48,17 @@ const AllUsers = () => {
     }
     
     if(!isFetched){
-        return <Watch
-        height="80"
-        width="80"
-        radius="48"
-        color="#4fa94d"
-        ariaLabel="watch-loading"
-        wrapperStyle={{}}
-        wrapperClassName=""
-        visible={true}
-      />
-    }
+      return <div className='flex justify-center items-center min-h-screen place-content-center mx-auto place-items-center '><Watch
+      height="80"
+      width="80"
+      radius="48"
+      color="#4fa94d"
+      ariaLabel="watch-loading"
+      wrapperStyle={{}}
+      wrapperClassName=""
+      visible={true}
+    /></div>
+  }
  let timeout;
     
     const handleSearch=e=>{
@@ -81,7 +81,7 @@ const AllUsers = () => {
 
     return (
         <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-Sora font-semibold text-center text-slate-800 mt-10">All Users</h2>
+            <h2 className="text-2xl font-Sora font-semibold text-center text-slate-800 mt-10">--All Users--</h2>
   <div className="flex justify-center mt-4 my-12">
   <form onSubmit={handleSearch}>
             {/* <input type="text" name="search" className="border-2 border-red-200 " id="" /> */}

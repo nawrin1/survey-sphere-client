@@ -1,8 +1,10 @@
-# React + Vite
+# Survey Sphere
+* Surveyors can create and update surveys
+* Users can vote, report, like and dislike surveys
+* Pro-user can comment on surveys
+* User can see charts and comments
+* Admin and surveyor can see All user response
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# live link
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

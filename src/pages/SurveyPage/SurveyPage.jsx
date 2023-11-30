@@ -7,6 +7,7 @@ import { FcSurvey } from "react-icons/fc";
 import { useEffect, useState } from "react";
 import TextField from '@mui/material/TextField';
 import { useLocation } from "react-router-dom";
+import { Watch } from "react-loader-spinner";
 
 const SurveyPage = () => {
     console.log(useLocation(),"loca")
@@ -14,7 +15,7 @@ const SurveyPage = () => {
     
     
     const [search,setSearch]=useState('')
-    const [surveys,loadings,refetch]=useAllSurvey(search)
+    const [surveys,loadings,refetch,isFetched]=useAllSurvey(search)
     
     const handleSearch=e=>{
         e.preventDefault()
@@ -29,6 +30,18 @@ const SurveyPage = () => {
 
 
     },[surveys])
+    if(!isFetched){
+        return <div className='flex justify-center items-center min-h-screen place-content-center mx-auto place-items-center '><Watch
+        height="80"
+        width="80"
+        radius="48"
+        color="#4fa94d"
+        ariaLabel="watch-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+      /></div>
+    }
     
   
     return (

@@ -4,6 +4,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { AuthContext } from "../../provider/AuthProvider";
 import moment from "moment";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const CheckoutForm = () => {
@@ -14,6 +15,7 @@ const CheckoutForm = () => {
     const elements = useElements();
     const axiosSecure=useAxiosSecure()
     const {user}=useContext(AuthContext)
+    const navigate=useNavigate()
     const price=40;
     useEffect(() => {
         if (price > 0) {
@@ -83,11 +85,20 @@ const CheckoutForm = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    axiosSecure.patch(`/updatePayment/${user.email}`)}}
+
+                    axiosSecure.patch(`/updatePayment/${user.email}`)
+                    .then(res=>{
+                        if (res.data.modifiedCount>0){
+                            navigate('/')
+
+                        }
+                    })
+                }
+                   
                    
           
 
-                }
+                }}
     
     return (
         <div className="max-w-4xl mx-auto bg-slate-200 p-6 rounded-xl">

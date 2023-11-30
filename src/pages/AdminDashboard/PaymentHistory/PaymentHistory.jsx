@@ -1,12 +1,25 @@
+import { Watch } from "react-loader-spinner";
 import usePayment from "../../../hooks/usePayment";
 
 
 const PaymentHistory = () => {
-    const [payment]=usePayment()
+    const [payment,isFetched]=usePayment()
     console.log(payment,"pay from his")
+    if(!isFetched){
+      return <div className='flex justify-center items-center min-h-screen place-content-center mx-auto place-items-center '><Watch
+      height="80"
+      width="80"
+      radius="48"
+      color="#4fa94d"
+      ariaLabel="watch-loading"
+      wrapperStyle={{}}
+      wrapperClassName=""
+      visible={true}
+    /></div>
+  }
     return (
         <div>
-             <h2 className="text-2xl font-Sora font-bold text-center text-blue-800">Payment History</h2>
+             <h2 className="text-2xl font-Sora font-bold text-center text-blue-800 my-7">--Payment History--</h2>
              <div>
      
       <div className="overflow-x-auto bg-slate-200">

@@ -16,11 +16,13 @@ const SurveyHome = () => {
   <div className="drawer-side">
     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label> 
     <ul className="menu p-4 w-60 min-h-full bg-indigo-200 text-base-content ">
+    <h2 className="relative text-3xl text-slate-500 font-Sora text-center mb-7">Surveyor Dashboard</h2>
                          <li className="font-Sora font-semibold">
                             <NavLink to="/"><div className=" mb-[2px] text-[16px]"><HiOutlineHome></HiOutlineHome></div>Home</NavLink>
                         </li>
                    <li className="font-Sora font-semibold">
                     <NavLink to="/surveyDashboard/surveyCreate">
+                    <div><LuMessageSquareDashed></LuMessageSquareDashed></div>
                         
                         Create Survey</NavLink>
                     </li>

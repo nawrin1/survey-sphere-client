@@ -1,17 +1,30 @@
+import { Watch } from "react-loader-spinner";
 import useReport from "../../../hooks/useReport";
 
 
 const ReportPage = () => {
-    const [report]=useReport()
+    const [report,isFetched]=useReport()
     console.log(report,".......")
     const handleReport=res=>{
         document.getElementById(`my_modal_${res._id}`).showModal();
 
     }
+    if(!isFetched){
+      return <div className='flex justify-center items-center min-h-screen place-content-center mx-auto place-items-center '><Watch
+      height="80"
+      width="80"
+      radius="48"
+      color="#4fa94d"
+      ariaLabel="watch-loading"
+      wrapperStyle={{}}
+      wrapperClassName=""
+      visible={true}
+    /></div>
+  }
     return (
         <div>
             <div>
-      <h2 className="text-2xl font-Sora font-bold text-center text-blue-800">Reports</h2>
+      <h2 className="text-2xl font-Sora font-bold text-center text-blue-800 my-7">--Reports--</h2>
       <div className="overflow-x-auto">
         <table className="table table-xs overflow-x-auto">
           <thead>

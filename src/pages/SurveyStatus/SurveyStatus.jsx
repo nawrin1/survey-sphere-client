@@ -4,9 +4,10 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useState } from "react";
 import { Modal } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { Watch } from "react-loader-spinner";
 
 const SurveyStatus = () => {
-  const [surveys, loading, refetch] = useAllSurvey("");
+  const [surveys, loading, refetch,isFetched] = useAllSurvey("");
   const [ress, setRess] = useState([]);
   console.log(surveys, "from survey status");
   const axiosSecure = useAxiosSecure();
@@ -32,7 +33,7 @@ const SurveyStatus = () => {
           timer: 1500,
         });
       }
-      const reportUpdate={surveyId:ress._id,title:ress.title,status:ress.status,report:data.report}
+      const reportUpdate={surveyId:ress._id,title:ress.title,status:ress.status,report:data.report,surveyor:ress.surveyor}
       const sData = axiosSecure.post("/unpublish", reportUpdate);
       console.log(sData.data);
     });
@@ -64,10 +65,22 @@ const SurveyStatus = () => {
       axiosSecure.delete(`/survey/${ress._id}`)
     }
   };
+  if(!isFetched){
+    return <div className='flex justify-center items-center min-h-screen place-content-center mx-auto place-items-center '><Watch
+    height="80"
+    width="80"
+    radius="48"
+    color="#4fa94d"
+    ariaLabel="watch-loading"
+    wrapperStyle={{}}
+    wrapperClassName=""
+    visible={true}
+  /></div>
+}
 
   return (
     <div>
-      <h2 className="text-2xl font-Sora text-blue-600 text-center mt-7 mb-6">Survey Status</h2>
+      <h2 className="text-2xl font-Sora text-blue-600 text-center mt-7 mb-6">--Survey Status--</h2>
       <div className="overflow-x-auto">
         <table className="table">
           <thead>

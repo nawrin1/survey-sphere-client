@@ -4,13 +4,14 @@ import { AuthContext } from "../../provider/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { BarChart } from "recharts";
 import { Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import { Watch } from "react-loader-spinner";
 
 
 
 const SurveyResponse = () => {
     const [response,setAllResponse]=useState([])
     const [data,setData]=useState([])
-    const [vote]=useVote()
+    const [vote,isFetched]=useVote()
     const{user}=useContext(AuthContext)
     const axiosSecure=useAxiosSecure()
     useEffect(()=>{
@@ -20,7 +21,7 @@ const SurveyResponse = () => {
         
 
 
-    },[user.email,vote])
+    },[user.email])
     const handleChart=(res)=>{
       axiosSecure.get(`/getSurveyData/${res._id}`)
         .then(response => {
@@ -35,11 +36,23 @@ const SurveyResponse = () => {
         document.getElementById(`my_modal_${res._id}`).showModal()
 
     }
+    if(!isFetched){
+      return <div className='flex justify-center items-center min-h-screen place-content-center mx-auto place-items-center '><Watch
+      height="80"
+      width="80"
+      radius="48"
+      color="#4fa94d"
+      ariaLabel="watch-loading"
+      wrapperStyle={{}}
+      wrapperClassName=""
+      visible={true}
+    /></div>
+  }
 
     return (
         <div>
              <div>
-      <h2 className="text-2xl font-Sora font-bold text-center text-blue-800 my-8">Response of Survey you created</h2>
+      <h2 className="text-2xl font-Sora font-bold text-center text-blue-800 my-8">--Response of Survey you created--</h2>
       <div className="overflow-x-auto table-xs w-screen lg:w-auto ">
         <table className="table ">
           <thead>

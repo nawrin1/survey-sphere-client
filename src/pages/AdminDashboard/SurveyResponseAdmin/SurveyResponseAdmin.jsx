@@ -5,11 +5,12 @@ import { AuthContext } from "../../../provider/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 import { Bar, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import { Watch } from "react-loader-spinner";
 
 
 
 const SurveyResponseAdmin = () => {
-    const [vote]=useVote()
+    const [vote,isFetched]=useVote()
     // const [response,setAllResponse]=useState([])
     const [data,setData]=useState([])
     
@@ -30,12 +31,24 @@ const SurveyResponseAdmin = () => {
         document.getElementById(`my_modal_${res._id}`).showModal()
 
     }
+    if(!isFetched){
+      return <div className='flex justify-center items-center min-h-screen place-content-center mx-auto place-items-center '><Watch
+      height="80"
+      width="80"
+      radius="48"
+      color="#4fa94d"
+      ariaLabel="watch-loading"
+      wrapperStyle={{}}
+      wrapperClassName=""
+      visible={true}
+    /></div>
+  }
     return (
         <div>
             
             <div>
              <div>
-      <h2 className="text-2xl font-Sora font-bold text-center text-blue-800 my-8">Survey Response</h2>
+      <h2 className="text-2xl font-Sora font-bold text-center text-blue-800 my-8">--Survey Response--</h2>
       <div className="overflow-x-auto w-screen lg:w-auto">
         <table className="table table-xs overflow-x-scroll ">
           <thead className=" text-[13px] font-semibold font-Sora">

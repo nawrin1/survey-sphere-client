@@ -71,14 +71,14 @@ export const router = createBrowserRouter([
         },
         {
           path:'allSurveyPage',
-          element:<AllSurvey></AllSurvey>
+          element:<SurveyorRoute><AllSurvey></AllSurvey></SurveyorRoute>
         },{
           path:'update/:id',
           element:<SurveyorRoute><Update></Update></SurveyorRoute>,
           loader: ({params}) => fetch(`http://localhost:5000/surveys/${params.id}`)
         },{
           path:'userFeedbacks',
-          element:<UserFeedbacks></UserFeedbacks>
+          element:<SurveyorRoute><UserFeedbacks></UserFeedbacks></SurveyorRoute>
         },{
           path:'surveyResponse',
           element:<SurveyorRoute><SurveyResponse></SurveyResponse></SurveyorRoute>
