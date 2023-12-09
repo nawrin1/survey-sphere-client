@@ -17,6 +17,12 @@ This website is a survey and polling related website where surveyors can create 
     <img src="https://skillicons.dev/icons?i=html,tailwind,js,react,mongodb,nodejs,express,firebase,vercel,materialui" />
   </a>
 </p>
+<p align="center">
+ 
+    <img src="https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white)" />
+    <img src="https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white">
+  
+</p>
 
 # live link
 https://survey-sphere-b6935.web.app
